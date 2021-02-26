@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function adminlte_image(){ //imagen random
-        return 'https://picsum.photos/300/300';
+        return asset('img/persona.png');
     }
 
     public function adminlte_desc() //para mostrar el rol del usuario

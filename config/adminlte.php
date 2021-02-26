@@ -16,8 +16,8 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Vanilla | ',
-    'title_postfix' => ' Web',
+    'title_prefix' => 'Taberna Española | ',
+    'title_postfix' => ' Administracion',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,12 +46,12 @@ return [
     |
     */
 
-    'logo' => '<b>Vanilla</b>WEB',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Taberna Española</b>',
+    'logo_img' => 'img/icono.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Vanilla Logo',
+    'logo_img_alt' => 'Taberna Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -67,10 +67,10 @@ return [
 
     'usermenu_enabled' => true, //muestra nombre en nav
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-success',
+    'usermenu_header_class' => 'colorPaginaOscuro',
     'usermenu_image' => true,
     'usermenu_desc' => true,
-    'usermenu_profile_url' => true,
+    'usermenu_profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -132,8 +132,8 @@ return [
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-gray elevation-4',  //la tercer clase hace referencia a los links activos
-    'classes_sidebar_nav' => '',      //agrega clase a la sidenav bar
-    'classes_topnav' => 'colorLuga navbar-dark',  //agrega clase a la nav bar de arriba {dark-white}
+    'classes_sidebar_nav' =>'',      //agrega clase a la sidenav bar
+    'classes_topnav' => 'colorPagina navbar-dark',  //agrega clase a la nav bar de arriba {dark-white}
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -150,12 +150,12 @@ return [
     */
 
     'sidebar_mini' => true,  //oculta el sidebar si lo minimizas
-    'sidebar_collapse' => false,  //si el sidenav figura cerrado o abierto cuando inicias la pagina
+    'sidebar_collapse' => true,  //si el sidenav figura cerrado o abierto cuando inicias la pagina
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => true,  //recuerde si estaba minimizado o no
     'sidebar_collapse_remember_no_transition' => false,  //haga o no la animacion de minimizar cuando recargas
     'sidebar_scrollbar_theme' => 'os-theme-light',  //cambia la clase de la barra de scroll del sidenav
-    'sidebar_scrollbar_auto_hide' => 'l',
+    'sidebar_scrollbar_auto_hide' => '',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 400, //velocidad de animaciones dentro del sidenav bar
 
@@ -173,7 +173,7 @@ return [
 
     //menu derecho para la administracion del dashboard
 
-    'right_sidebar' => true,
+    'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,   //animacion cuando desplaza
@@ -232,46 +232,41 @@ return [
 
     'menu' => [
         [
-            'text' => 'Link 1',
-            'url' => '#',
-            'topnav' => true //para que aparezca en el topnav (true=topNav // false=navBar)
-        ],
-        [
-            'text' => 'Link 2',
-            'url' => '#',
-            'topnav_right' => true //para que aparezca en el topnav (true=topNav // false=navBar)
-        ],
-        [
-            'text' => 'Link 3',
-            'url' => '#',
-            'topnav_user' => true //para que aparezca en el topnav (true=topNav // false=navBar)
-        ],
-        [
             'text' => 'Busqueda',
-            'search' => true,
+            'search' => false,
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',  //verifica si tiene esa directiva para mostrarlo
-        ],
-        [
-            'text' => 'Pagina Principal',
+            'text' => 'Ventana Principal',
             'route' => 'home',
             'icon' => 'fas fa-home',
-            'label' => 'Nuevo',
-            'label_color' => 'warning',
+
+        ],
+        ['header' => 'PAGINA WEB'],
+        [
+            'text'        => 'Nosotros',
+            'url'         => '/',
+            'icon'        => 'fas fa-users'
+        ],
+        [
+            'text'        => 'Menu',
+            'url'         => '/menu',
+            'icon'        => 'fas fa-utensils',
+        ],
+        ['header' => 'OPERACIONES'],
+        [
+            'text'       => 'Nuevo Producto',
+            'route'        => 'product.create',
+            'icon'    => 'fas fa-plus',
 
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'       => 'Listado Productos',
+            'route'        => 'product.index',
+            'icon'    => 'fas fa-list-ul',
+
         ],
-        ['header' => 'CONFIGURACION DE CUENTA'],
+        /*['header' => 'CONFIGURACION DE CUENTA'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -281,61 +276,8 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        ],*/
+
     ],
 
     /*
